@@ -18,7 +18,7 @@ function getApi(event) {
     event.preventDefault();
 
     //first query for todays weather (specify units)
-    var queryUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + city.val() + "&appid=" + apiKey+"&units=imperial";
+    var queryUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city.val() + "&appid=" + apiKey+"&units=imperial";
     fetch(queryUrl)
         .then(function(response) {
             return response.json();
@@ -41,7 +41,7 @@ function getApi(event) {
         });
     
     //retrieve geo coordinates for use in 5-day api call
-    var geoUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city.val() + "&limit=1&appid=" + apiKey;
+    var geoUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city.val() + "&limit=1&appid=" + apiKey;
     fetch(geoUrl)
         .then(function(response){
             return response.json();
@@ -50,7 +50,7 @@ function getApi(event) {
             //store coordinates in array
             var lat_lon = [data[0].lat, data[0].lon];
             //build url with coordinates and specify units
-            var fiveDayUrl = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat_lon[0] + "&lon=" + lat_lon[1] + "&appid="+ apiKey +"&units=imperial";
+            var fiveDayUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat_lon[0] + "&lon=" + lat_lon[1] + "&appid="+ apiKey +"&units=imperial";
         fetch(fiveDayUrl)
             .then(function(response){
                 return response.json();
